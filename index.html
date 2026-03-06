@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEZRO PVT LTD. | E-Visa Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="site-header">
+      <div class="logo-placeholder">VEZRO INDIA</div>
+      <h1>VEZRO PVT LTD.</h1>
+      <p class="subheading">E VISA</p>
+    </header>
+
+    <main class="content-grid">
+      <section class="card admin-card">
+        <h2>Admin Login</h2>
+        <form id="loginForm" autocomplete="off">
+          <label for="loginId">Login ID</label>
+          <input id="loginId" type="email" value="shajan@evisa.com" required />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" value="India@123" required />
+
+          <button type="submit" class="btn primary">Login</button>
+          <p id="loginMessage" class="message"></p>
+        </form>
+      </section>
+
+      <section class="card visa-card hidden" id="visaPanel">
+        <div class="action-row">
+          <button class="btn primary" id="applyVisaBtn" type="button">Apply E-Visa</button>
+          <button class="btn secondary" id="applyTicketBtn" type="button">Apply Ticket</button>
+        </div>
+
+        <div id="ticketNotice" class="ticket-notice hidden">Ticket application module is reserved for Phase 2 integration.</div>
+
+        <form id="visaForm" class="hidden">
+          <h2>E-Visa Application Form</h2>
+
+          <div class="grid">
+            <div>
+              <label for="photo">Upload Image (JPG only)</label>
+              <input id="photo" type="file" accept=".jpg,.jpeg,image/jpeg" required />
+              <img id="photoPreview" alt="Uploaded preview" class="photo-preview hidden" />
+            </div>
+
+            <div>
+              <label for="issueDate">Date & Place of Issue</label>
+              <input id="issueDate" type="text" readonly />
+            </div>
+
+            <div>
+              <label for="validUntil">Valid Until</label>
+              <input id="validUntil" type="text" readonly />
+            </div>
+
+            <div>
+              <label for="uidNo">UID No</label>
+              <input id="uidNo" type="text" readonly />
+            </div>
+
+            <div>
+              <label for="allowedEntry">Allowed to Enter</label>
+              <input id="allowedEntry" type="text" value="Odisha Boundaries" readonly />
+            </div>
+
+            <div>
+              <label for="fullName">Full Name</label>
+              <input id="fullName" type="text" required />
+            </div>
+
+            <div>
+              <label for="nationality">Nationality</label>
+              <input id="nationality" type="text" required />
+            </div>
+
+            <div>
+              <label for="birthPlace">Place of Birth</label>
+              <input id="birthPlace" type="text" required />
+            </div>
+
+            <div>
+              <label for="aadharNo">Aadhar No</label>
+              <input id="aadharNo" type="text" maxlength="12" pattern="[0-9]{12}" required />
+            </div>
+
+            <div>
+              <label for="profession">Profession</label>
+              <input id="profession" type="text" required />
+            </div>
+
+            <div>
+              <label for="category">Category</label>
+              <input id="category" type="text" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn primary">APPLY</button>
+          <div id="loading" class="loading hidden" aria-live="polite">
+            <span class="spinner"></span>
+            Processing official visa format...
+          </div>
+          <button id="downloadPdfBtn" type="button" class="btn success hidden">Download PDF</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
